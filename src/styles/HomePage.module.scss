@@ -1,0 +1,12 @@
+@import "./Main.module.scss";
+
+.mainBlock{
+    width:100%;
+    height:auto;
+    background-color: $bodyColor;
+
+    h1{
+        text-align: center;
+        color:$paragraphColor;
+    }
+}

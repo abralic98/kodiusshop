@@ -1,0 +1,58 @@
+@import "./Main.module.scss";
+
+.mainBlock{
+    width:15vw;
+    height:auto;
+    margin:0.5vw;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(27, 27, 27);
+    
+    p{
+        color:$paragraphColor;
+        font-family: $mainFont;
+    }
+    img{
+        width:15vw;
+        height:10vw;
+    }
+    
+    .namePriceBlock{
+        width:15vw;
+        height:auto;
+        margin-bottom:1vw;
+        margin-top:1vw;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        p{
+
+        }
+    }
+    .buttonBlock{
+        width:13vw;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left:1vw;
+        padding-right:1vw;
+        margin-bottom:1vw;
+        button{
+            @include button($buttonTransparent,$prettyRedColor, $prettyRedColor, 8vw, 2vw, 1)
+        }
+        button:hover{
+            @include button($buttonTransparent,	$prettyGreenColor, $prettyRedColor, 8vw, 2vw, 1.1)
+        }
+        select{
+            width:3vw;
+            height:2vw;
+            background-color: rgb(39, 39, 39);
+            border:0;
+            color:white;
+            font-family: $mainFont;
+        }
+    }
+}

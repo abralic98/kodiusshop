@@ -1,0 +1,69 @@
+@import "./Main.module.scss";
+
+.mainBlock{
+    width:100%;
+    min-height:100vh;
+    background-color: $bodyColor;
+
+    h1{
+        text-align: center;
+        color:$paragraphColor;
+    }
+
+    .promotionBlock{
+        width:80vw;
+        height:auto;
+        background-color: $shopListBackground;
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .promotion{
+            background-color: black;
+            width:20vw;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom:2vw;
+            img{
+                width:20vw;
+                height:15vw;
+            }
+            p{
+                color:$paragraphColor;
+                font-family: $mainFont;
+                margin-top:1vw;
+                margin-bottom:1vw;
+                font-size:20px;
+            }
+            button{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 8vw, 2.5vw, 1)
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 8vw, 2.5vw, 1.1)
+            }
+        }
+    }
+    .btnBlock{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:80vw;
+        padding-top:2vw;
+        margin-left:auto;
+        margin-right:auto;
+        padding-bottom:2vw;
+        background-color: $shopListBackground;
+        button{
+            @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 8vw, 2.5vw, 1);
+            margin-left:auto;
+            margin-right:auto;
+            
+        }
+        button:hover{
+            @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 8vw, 2.5vw, 1.1)
+        }
+    }
+}

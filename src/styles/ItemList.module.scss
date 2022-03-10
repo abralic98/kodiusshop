@@ -1,0 +1,36 @@
+@import "./Main.module.scss";
+
+.mainBlock{
+    width:80vw;
+    padding:1vw;
+    margin-top:2vw;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: $shopListBackground;
+
+    .itemList{
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .pagination{
+        display:Flex;
+        align-items: center;
+        justify-content: space-between;
+        width:30vw;
+        height:4vw;
+        margin-left:auto;
+        margin-right:auto;
+        
+        p{
+            color:$paragraphColor;
+            font-family: $mainFont;
+            font-size:20px;
+        }
+        button:nth-child(1){
+            @include button($buttonTransparent, $prettyRedColor, $prettyRedColor, 10vw, 2.5vw, 1)
+        }
+        button:nth-child(3){
+            @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 10vw, 2.5vw, 1)
+        }
+    }
+}

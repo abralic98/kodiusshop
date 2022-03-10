@@ -1,0 +1,37 @@
+@font-face {
+    font-family: "Reggae One";
+    src: local("fonts"),
+     url("../fonts/ReggaeOne-Regular.ttf") format("truetype");
+    font-weight: bold;
+}
+
+// Variables
+
+$bodyColor:rgb(44, 44, 44);
+$background: rgb(27, 27, 27);
+$buttonTransparent:rgba(0,0,0,0);
+$shopListBackground:rgb(32, 32, 32);
+$paragraphColor:white;
+$headerParagraphColor:rgb(204, 204, 204);
+$headerNavBarColor:rgba(0, 0, 0, 1);
+$mainFont:"Reggae One";
+$prettyRedColor:rgb(121, 0, 0);
+$prettyGreenColor:#1DB954;
+
+// button styling
+
+
+@mixin button ($backgroundColor, $borderColor, $fontColor, $width, $height, $scale){
+    width:$width;
+    height:$height;
+    font-family: $mainFont;
+    background-color: $buttonTransparent;
+    border-style: solid;
+    border-color:$borderColor;
+    color:$fontColor;
+    cursor:pointer;
+    border-radius:5px;
+    transform:scale($scale);
+    transition:0.3s;
+    font-size:16px;
+}

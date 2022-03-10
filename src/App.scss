@@ -1,0 +1,12 @@
+@import "./styles/Main.module.scss";
+
+body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+  background-color: $bodyColor;
+}
+p{
+  padding:0;
+  margin:0;
+}
