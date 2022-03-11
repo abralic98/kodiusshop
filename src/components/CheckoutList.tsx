@@ -3,6 +3,8 @@ import { useContext, useState, useEffect } from "react";
 import { ContextApi } from "../storage/Context";
 import {RiDeleteBin5Fill} from "react-icons/ri";
 import UserInfoForm from "./UserInfoForm";
+import CheckoutItem from "./CheckoutItem";
+import { Calculator } from "./Calculator";
 
 interface arrI {
     ID:number,
@@ -12,10 +14,12 @@ interface arrI {
     multiplier:number,
 }
 const CheckoutList = () =>{
-    const {Cart, FinalPrice} = useContext(ContextApi);
+    const {Cart, FinalPrice, Promotions} = useContext(ContextApi);
     const [cart, setCart] = Cart;
     const [finalPrice, setFinalPrice] = FinalPrice;
-    const [sortedCart, setSortedCart] = useState([]);
+    const [promotions, setPromotions] = Promotions;
+    const [buttons, setButtons] = useState([false,false,false,false])
+    const [discountPrice, setDiscountPrice] = useState<any>();
     const [step, setStep] = useState<number>(1);
     function deleteFromCart(key:number){
         let newArr:Array<object> = [];
@@ -31,10 +35,20 @@ const CheckoutList = () =>{
         setCart(newArr)
     }
     function stepHandler(step:number){
+        setButtons((prev)=>{
+            prev[0] = false;
+            prev[1] = false;
+            prev[2] = false;
+            prev[3] = false;
+            prev[step-1] = true;
+            return [...prev]
+        })
         setStep(step);
     }
     function buttonHandler(index:number){
-        setStep((prev)=>prev+(index))
+        if(cart.length>0){
+            setStep((prev)=>prev+(index));
+        }
     }
     function sortHandler(cart:arrI[]){
         let newList:arrI[] = [];
@@ -48,29 +62,81 @@ const CheckoutList = () =>{
         });
         console.log(newList)
         setCart(newList)
-    }
+        applyQuantity(newList)
 
+    }
+    function applyPromotions(price:number){
+        const calculated = Calculator(price, promotions);
+        setDiscountPrice(calculated)
+    }
+    function applyQuantity (cart:arrI[]){
+        let motionQuantity = 0;
+        let motionPrice = 0;
+        let motionsum = 0;
+        let smokeQuantity = 0;
+        let smokePrice = 0;
+        let smokesum = 0;
+        let newPrice = 0;
+        for(let i in cart){
+            if(cart[i].name==="Motion Sensor"){
+                motionQuantity = cart[i].multiplier;
+                motionPrice = cart[i].price/cart[i].multiplier
+            }
+            if(cart[i].name==="Smoke Sensor"){
+                smokeQuantity = cart[i].multiplier;
+                smokePrice = cart[i].price/cart[i].multiplier
+            }
+        }
+        newPrice = finalPrice - smokePrice * smokeQuantity - motionPrice * motionQuantity;
+        if(motionQuantity>0){
+            if(motionQuantity%3===0){
+                motionsum = motionsum + motionQuantity/3 * 65
+            }
+            if(motionQuantity%3!==0){
+                const extra = motionQuantity%3;
+                motionsum = motionsum + Math.floor(motionQuantity/3) * 65 + motionPrice * extra;
+            }
+        }
+        if(smokeQuantity>0){
+            if(smokeQuantity%2===0){
+                smokesum = smokesum + smokeQuantity/2 * 35
+            }
+            if(smokeQuantity%2!==0){
+                const extra = smokeQuantity%2;
+                smokesum = smokesum + Math.floor(smokeQuantity/2) * 35 + smokePrice * extra;
+            }
+        }
+        newPrice = newPrice + smokesum + motionsum;
+        console.log(newPrice, "new Price");
+        applyPromotions(newPrice);
+    }
+    function getColor(i:boolean){
+        if(i===true){
+            return "#1DB954";
+        }
+    }
     useEffect(()=>{
         if(step===2){
             sortHandler(cart)
         }
-    },[step])
+        console.log(cart);
+    },[step, finalPrice])
     return (
         <div className={classes.mainBlock}>
             <div className={classes.steps}>
-                <div onClick={()=>stepHandler(1)} className={classes.step}>
+                <div style={{backgroundColor:getColor(buttons[0])}} onClick={()=>stepHandler(1)} className={classes.step}>
                     <p>1</p>
                 </div>
                 <p className={classes.lineStep}>{"=========>"}</p>
-                <div onClick={()=>stepHandler(2)} className={classes.step}>
+                <div style={{backgroundColor:getColor(buttons[1])}} onClick={()=>stepHandler(2)} className={classes.step}>
                     <p>2</p>
                 </div>
                 <p className={classes.lineStep}>{"=========>"}</p>
-                <div onClick={()=>stepHandler(3)} className={classes.step}>
+                <div style={{backgroundColor:getColor(buttons[2])}} onClick={()=>stepHandler(3)} className={classes.step}>
                     <p>3</p>
                 </div>
                 <p className={classes.lineStep}>{"=========>"}</p>
-                <div onClick={()=>stepHandler(4)} className={classes.step}>
+                <div style={{backgroundColor:getColor(buttons[3])}} onClick={()=>stepHandler(4)} className={classes.step}>
                     <p>4</p>
                 </div>
             </div>
@@ -79,37 +145,45 @@ const CheckoutList = () =>{
                 {cart.map((item:any, key:number)=>{
                     return (
                         <div key={key}>
-                            <div className={classes.item}>
-                                <div className={classes.info}>
-                                    <div className={classes.name}>
-                                        <img src={item.image} alt="" />
-                                        <p>{item.name}</p>
-                                    </div>
-                                    <div className={classes.multiplier}>
-                                        <p>Quantity</p>
-                                        <p>{item.multiplier}</p>
-                                    </div>
-                                    <div className={classes.specialPromotion}>
-                                        {
-                                        item.name==="Motion Sensor" ? 
-                                        <p>Attention for every 3x {item.name} you get special discount</p> :
-                                        item.name==="Smoke Sensor" ? 
-                                        <p>Attention for every 2x {item.name} you get special discount</p> :
-                                        null}    
-                                    </div>
-                                </div>
-                                <div className={classes.priceBlock}>
-                                    <RiDeleteBin5Fill onClick={()=>deleteFromCart(key)}/>
-                                    <p>{Math.round(item.price * 100) / 100}$</p>
-                                </div>
-                            </div>
-                            <div className={classes.line}></div>
+                            <CheckoutItem deleteFromCart={()=>deleteFromCart(key)} ID={item.ID} name={item.name} price={item.price} image={item.image} multiplier={item.multiplier} />
                         </div>
                     )
                 })}
+                {cart.length===0 ? <p className={classes.empty}>No Items in Cart</p> : null}
             </div> :
             step===2 ? 
-            <div>2</div> :
+            <div>
+                {cart.map((item:any, key:number)=>{
+                    return (
+                        <div key={key}>
+                            <CheckoutItem deleteFromCart={()=>deleteFromCart(key)} ID={item.ID} name={item.name} price={item.price} image={item.image} multiplier={item.multiplier} />
+                        </div>
+                    )
+                })}
+                {cart.length>0 ? 
+                <div className={classes.promotions}>
+                    <div>
+                        {promotions[0] ? <p>Promotion Activated -5%</p> :
+                        promotions[1] ? <p>Promotion Activated -20% </p> : null}
+                        {promotions[2] ? <p>Promotion Activated -20$</p> : null}
+                    </div>
+                    <div className={classes.priceBlock}>
+                        <div>
+                            <p>Total</p>
+                            <p>{Math.round(finalPrice * 100) / 100}$</p>
+                        </div>
+                        <div>
+                            <p>Discounts</p>
+                            <p>{-Math.round((finalPrice-discountPrice) * 100) / 100}$</p>
+                        </div>
+                        <div className={classes.line}></div>
+                        <div>
+                            <p>Final Price</p>
+                            <p>{Math.round(discountPrice * 100) / 100}$</p>
+                        </div>
+                    </div>
+                </div> : <p className={classes.empty}>No Items in Cart</p>}
+            </div> :
             step===3 ?
             <div><UserInfoForm/></div> :
             step===4 ? <p>4</p> : null}
