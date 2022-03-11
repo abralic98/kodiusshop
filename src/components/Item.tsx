@@ -4,6 +4,7 @@ import {useState, useContext, useEffect, useRef} from "react";
 import { ContextApi } from "../storage/Context";
 
 interface Iitem {
+    ID:number,
     name:string,
     price:number,
     image:string
@@ -16,6 +17,7 @@ const Item = (props:Iitem) =>{
     const [multiplier, setMultiplier] = useState<number>(1);
     const [textColor, setTextColor] = useState<string>("rgb(121, 0, 0)");
     const buttonValue = useRef<HTMLButtonElement>(null);
+
     useEffect(()=>{
         console.log(cart)
     },[cart])
@@ -25,7 +27,7 @@ const Item = (props:Iitem) =>{
                 [...prev, 
                 {
                     name:name,
-                    price:price,
+                    price:price*multiplier,
                     image:image,
                     multiplier:multiplier
                 }]

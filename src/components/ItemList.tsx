@@ -12,6 +12,7 @@ const ItemList = () =>{
     const server = Server;
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [items, setItems] = useState([{
+        ID:0,
         name:"",
         price:0,
         image:""
@@ -31,7 +32,7 @@ const ItemList = () =>{
             <div className={classes.itemList}>
                 {items.map((item)=>{
                     return(
-                        <Item name={item.name} price={item.price} image={item.image}/>
+                        <Item ID={item.ID} name={item.name} price={item.price} image={item.image}/>
                     )
                 })}
             </div>

@@ -1,0 +1,60 @@
+@import "./Main.module.scss";
+
+.mainBlock{ 
+    width:100vw;
+
+    .formBlock {
+        width:100vw;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+
+        form{
+            margin-top:2vw;
+            width:20vw;
+            height:auto;
+            background-color: black;
+            color:$paragraphColor;
+            font-family: $mainFont;
+            animation:fadeIn 1s forwards;
+        }
+        .login{
+            width:20vw;
+            height:auto;
+            background-color: black;
+            
+            color:$paragraphColor;
+            font-family: $mainFont;
+            animation:fadeIn 1s forwards;
+        }
+    }
+    
+    .title{
+        font-size:25px;
+        padding:1vw;
+        text-align: center;
+    }
+    .inputBlock{
+        display:flex;
+        padding-top:0.5vw;
+        padding-bottom:0.5vw;
+        flex-direction: column;
+
+        label{
+            margin-left:1vw;
+            padding-bottom:0.5vw;
+        }
+        input{
+            margin-left:1vw;
+            margin-right:1vw;
+            height:30px;
+            font-family: $mainFont;
+        }
+    }
+    
+}
+
+@keyframes fadeIn{
+    0%{opacity: 0;}
+    100%{opacity:1;}
+}
