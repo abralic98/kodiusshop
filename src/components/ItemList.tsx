@@ -37,11 +37,6 @@ const ItemList = () =>{
                 })}
             </div>
             : null}
-            <div className={classes.pagination}>
-                <button>Previous Page</button>
-                <p>1</p>
-                <button>Next Page</button>
-            </div>
         </div>
     )
 }

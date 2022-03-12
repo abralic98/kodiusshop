@@ -14,11 +14,15 @@ interface arrI {
     multiplier:number,
 }
 const CheckoutList = () =>{
-    const {Cart, FinalPrice, Promotions} = useContext(ContextApi);
+    const {Cart, FinalPrice, Promotions, UserInfoCheck, Email, Adress, CreditCard} = useContext(ContextApi);
     const [cart, setCart] = Cart;
     const [finalPrice, setFinalPrice] = FinalPrice;
     const [promotions, setPromotions] = Promotions;
-    const [buttons, setButtons] = useState([false,false,false,false])
+    const [userInfoCheck, setUserInfoCheck] = UserInfoCheck;
+    const [email, setEmail] = Email;
+    const [adress, setAdress] = Adress;
+    const [creditCard, setCreditCard] = CreditCard;
+    const [buttons, setButtons] = useState([true,false,false,false]);
     const [discountPrice, setDiscountPrice] = useState<any>();
     const [step, setStep] = useState<number>(1);
     function deleteFromCart(key:number){
@@ -35,19 +39,28 @@ const CheckoutList = () =>{
         setCart(newArr)
     }
     function stepHandler(step:number){
-        setButtons((prev)=>{
-            prev[0] = false;
-            prev[1] = false;
-            prev[2] = false;
-            prev[3] = false;
-            prev[step-1] = true;
-            return [...prev]
-        })
-        setStep(step);
+        if(step===4 && (userInfoCheck[0]!==true || userInfoCheck[1]!==true || userInfoCheck[2]!==true)){
+            return;
+        }else{
+            if(step<=4 && step>0){
+                setButtons((prev)=>{
+                    prev[0] = false;
+                    prev[1] = false;
+                    prev[2] = false;
+                    prev[3] = false;
+                    prev[step-1] = true;
+                    return [...prev]
+                })
+                setStep(step);
+            }else{
+                return;
+            }
+        }
     }
     function buttonHandler(index:number){
         if(cart.length>0){
-            setStep((prev)=>prev+(index));
+            stepHandler(step+index)
+            //setStep((prev)=>prev+(index));  
         }
     }
     function sortHandler(cart:arrI[]){
@@ -141,7 +154,7 @@ const CheckoutList = () =>{
                 </div>
             </div>
             {step===1 ? 
-            <div>
+            <div className={classes.scrollBlock}>
                 {cart.map((item:any, key:number)=>{
                     return (
                         <div key={key}>
@@ -164,7 +177,7 @@ const CheckoutList = () =>{
                 <div className={classes.promotions}>
                     <div>
                         {promotions[0] ? <p>Promotion Activated -5%</p> :
-                        promotions[1] ? <p>Promotion Activated -20% </p> : null}
+                         promotions[1] ? <p>Promotion Activated -20% </p> : null}
                         {promotions[2] ? <p>Promotion Activated -20$</p> : null}
                     </div>
                     <div className={classes.priceBlock}>
@@ -186,10 +199,30 @@ const CheckoutList = () =>{
             </div> :
             step===3 ?
             <div><UserInfoForm/></div> :
-            step===4 ? <p>4</p> : null}
+            step===4 ? 
+            <div className={classes.paymentBlock}>
+                <h1>Payment Successful</h1>
+                <p>Personal info</p>
+                <p>Email Adress : {email}</p>
+                <p>Adress : {adress}</p>
+                <p>Credit Card Number : {creditCard}</p>
+                <h2>Items Bought</h2>
+                {cart.map((item:any, key:number)=>{
+                    return (
+                        <div className={classes.paymentCart}key={key}>
+                            <img src={item.image} alt="" />
+                            <p>{item.name}</p>
+                            <p>{item.multiplier}</p>
+                        </div>
+                    )
+                })}
+            </div>
+            : null}
             <div className={classes.btnBlock}>
                 <button onClick={()=>buttonHandler(-1)}>Back</button>
-                <button onClick={()=>buttonHandler(1)}>Next Step</button>
+                {step!==3 && step!==4 ? <button onClick={()=>buttonHandler(1)}>Next</button> : 
+                userInfoCheck[0]===true && userInfoCheck[1]===true && userInfoCheck[2]===true && step===3 ?
+                <button onClick={()=>buttonHandler(1)}>Next</button> : null}
             </div>
         </div>
     )

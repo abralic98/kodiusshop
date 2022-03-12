@@ -7,9 +7,14 @@ export const ContextApi = createContext<any>({});
 
 export const Storage = (props:any) =>{
     const server = "http://116.203.242.253:3004";
-    const [cart, setCart] = useState([]);
-    const [finalPrice, setFinalPrice] = useState(0);
-    const [promotions, setPromotions] = useState([false,false,false])
+    const [cart, setCart] = useState<object[]>([]);
+    const [finalPrice, setFinalPrice] = useState<number>(0);
+    const [promotions, setPromotions] = useState<boolean[]>([false,false,false]);
+    const [userInfoCheck, setUserInfoCheck] = useState<boolean[]>([]);
+    const [email, setEmail] = useState<string>();
+    const [adress, setAdress] = useState<string>();
+    const [creditCard, setCreditCard] = useState<number>();
+
     const firstRender = useRef<boolean>(true);
     const [windowSize, setWindowSize] = useState<Object>({
         width: window.innerWidth,
@@ -30,7 +35,11 @@ export const Storage = (props:any) =>{
         Server:server,
         Cart:[cart, setCart],
         FinalPrice:[finalPrice, setFinalPrice],
-        Promotions:[promotions, setPromotions]
+        Promotions:[promotions, setPromotions],
+        UserInfoCheck:[userInfoCheck, setUserInfoCheck],
+        Email:[email, setEmail],
+        Adress:[adress, setAdress],
+        CreditCard:[creditCard, setCreditCard]
     }
 
     return (

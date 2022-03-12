@@ -12,17 +12,27 @@
         form{
             margin-top:2vw;
             width:20vw;
+            padding-bottom:2vw;
             height:auto;
             background-color: black;
             color:$paragraphColor;
             font-family: $mainFont;
             animation:fadeIn 1s forwards;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            button{
+                @include button($buttonTransparent,$prettyGreenColor, $prettyGreenColor, 8vw, 2vw, 1);
+                margin-top:1vw;
+                margin-left:auto;
+                margin-right:auto;
+            }
         }
         .login{
             width:20vw;
             height:auto;
             background-color: black;
-            
             color:$paragraphColor;
             font-family: $mainFont;
             animation:fadeIn 1s forwards;
