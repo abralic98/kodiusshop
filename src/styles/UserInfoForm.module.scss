@@ -2,13 +2,11 @@
 
 .mainBlock{ 
     width:100vw;
-
     .formBlock {
         width:100vw;
         display:flex;
         align-items: center;
         justify-content: center;
-
         form{
             margin-top:2vw;
             width:20vw;
@@ -29,16 +27,7 @@
                 margin-right:auto;
             }
         }
-        .login{
-            width:20vw;
-            height:auto;
-            background-color: black;
-            color:$paragraphColor;
-            font-family: $mainFont;
-            animation:fadeIn 1s forwards;
-        }
     }
-    
     .title{
         font-size:25px;
         padding:1vw;
@@ -62,6 +51,85 @@
         }
     }
     
+}
+@media only screen and (max-width:1400px){
+    .mainBlock{ 
+        .formBlock {
+            form{
+                width:40vw;       
+                input{
+                    height:3vw;
+                }
+                button{
+                    @include button($buttonTransparent,$prettyGreenColor, $prettyGreenColor, 12vw, 4vw, 1);
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:1000px){
+    .mainBlock{ 
+        .formBlock {
+            margin-top:1vw;
+            width:100vw;
+            height:80vh;
+            display:flex;
+            position:relative;
+            form{
+                width:80vw;
+                position:absolute;
+                top:0;
+                bottom:15vw;
+                align-items: center;
+                justify-content: flex-start;
+                input{
+                    height:5vw;
+                }
+                button{
+                    @include button($buttonTransparent,$prettyGreenColor, $prettyGreenColor, 15vw, 6vw, 1);
+                    position:absolute;
+                    bottom:5vw;
+                }
+            }
+        }
+        .inputBlock{
+            display:flex;
+            width:70vw;
+            padding-top:0.5vw;
+            padding-bottom:0.5vw;
+            flex-direction: column;
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .mainBlock{
+        .formBlock {
+            form{
+                bottom:20vw;
+                input{
+                    height:7vw;
+                }
+                button{
+                    @include button($buttonTransparent,$prettyGreenColor, $prettyGreenColor, 30vw, 10vw, 1);
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:500px){
+    .mainBlock{
+        .formBlock {
+            form{
+                width:80vw;
+                position:absolute;
+                top:0;
+                bottom:25vw;
+                input{
+                    height:10vw;
+                }
+            }
+        }
+    }
 }
 
 @keyframes fadeIn{

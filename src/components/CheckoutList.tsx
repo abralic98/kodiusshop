@@ -35,13 +35,23 @@ const CheckoutList = () =>{
             }
         }
         console.log(newArr);
+        setUserInfoCheck((prev:boolean[])=>{
+            prev[0] = false;
+            prev[1] = false;
+            prev[2] = false;
+            return [...prev];
+        })
         setFinalPrice(price);
         setCart(newArr)
     }
     function stepHandler(step:number){
         if(step===4 && (userInfoCheck[0]!==true || userInfoCheck[1]!==true || userInfoCheck[2]!==true)){
             return;
-        }else{
+        }
+        if((step===3 || step===2) && cart.length===0){
+            return;
+        }
+        else{
             if(step<=4 && step>0){
                 setButtons((prev)=>{
                     prev[0] = false;
@@ -140,20 +150,20 @@ const CheckoutList = () =>{
                 <div style={{backgroundColor:getColor(buttons[0])}} onClick={()=>stepHandler(1)} className={classes.step}>
                     <p>1</p>
                 </div>
-                <p className={classes.lineStep}>{"=========>"}</p>
+                <p className={classes.lineStep}>{"=====>"}</p>
                 <div style={{backgroundColor:getColor(buttons[1])}} onClick={()=>stepHandler(2)} className={classes.step}>
                     <p>2</p>
                 </div>
-                <p className={classes.lineStep}>{"=========>"}</p>
+                <p className={classes.lineStep}>{"=====>"}</p>
                 <div style={{backgroundColor:getColor(buttons[2])}} onClick={()=>stepHandler(3)} className={classes.step}>
                     <p>3</p>
                 </div>
-                <p className={classes.lineStep}>{"=========>"}</p>
+                <p className={classes.lineStep}>{"=====>"}</p>
                 <div style={{backgroundColor:getColor(buttons[3])}} onClick={()=>stepHandler(4)} className={classes.step}>
                     <p>4</p>
                 </div>
             </div>
-            {step===1 ? 
+            {step===1 && cart.length>0 ? 
             <div className={classes.scrollBlock}>
                 {cart.map((item:any, key:number)=>{
                     return (
@@ -164,11 +174,15 @@ const CheckoutList = () =>{
                 })}
                 {cart.length===0 ? <p className={classes.empty}>No Items in Cart</p> : null}
             </div> :
-            step===2 ? 
+            step===1 && cart.length===0 ?
             <div>
+                {cart.length===0 ? <p className={classes.empty}>No Items in Cart</p> : null}
+            </div> :
+            step===2 ? 
+            <div className={classes.scrollBlock}>
                 {cart.map((item:any, key:number)=>{
                     return (
-                        <div key={key}>
+                        <div className={classes.sortedBlock} key={key}>
                             <CheckoutItem deleteFromCart={()=>deleteFromCart(key)} ID={item.ID} name={item.name} price={item.price} image={item.image} multiplier={item.multiplier} />
                         </div>
                     )
@@ -203,7 +217,7 @@ const CheckoutList = () =>{
             <div className={classes.paymentBlock}>
                 <h1>Payment Successful</h1>
                 <p>Personal info</p>
-                <p>Email Adress : {email}</p>
+                <p>Email : {email}</p>
                 <p>Adress : {adress}</p>
                 <p>Credit Card Number : {creditCard}</p>
                 <h2>Items Bought</h2>
@@ -219,8 +233,10 @@ const CheckoutList = () =>{
             </div>
             : null}
             <div className={classes.btnBlock}>
-                <button onClick={()=>buttonHandler(-1)}>Back</button>
-                {step!==3 && step!==4 ? <button onClick={()=>buttonHandler(1)}>Next</button> : 
+                {step!==4 ? 
+                <button onClick={()=>buttonHandler(-1)}>Back</button>:null}
+                {step!==3 && step!==4 ? 
+                <button onClick={()=>buttonHandler(1)}>Next</button> : 
                 userInfoCheck[0]===true && userInfoCheck[1]===true && userInfoCheck[2]===true && step===3 ?
                 <button onClick={()=>buttonHandler(1)}>Next</button> : null}
             </div>

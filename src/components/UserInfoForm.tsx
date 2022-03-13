@@ -67,7 +67,7 @@ const UserInfoForm = () =>{
         <div className={classes.mainBlock}>
             <div className={classes.formBlock}>
                 <form onSubmit={handleSubmit}action="">
-                    <p className={classes.title}>Register</p>
+                    <p className={classes.title}>Personal Info</p>
                     <div className={classes.inputBlock}>
                         <label htmlFor="">Email</label>
                         <input onChange={(e)=>setEmail(e.target.value)} style={{borderColor:getColor(userInfoCheck[0])}}ref={emailInputRef}type="email" />

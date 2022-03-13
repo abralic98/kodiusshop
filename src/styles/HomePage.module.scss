@@ -10,3 +10,12 @@
         color:$paragraphColor;
     }
 }
+@media only screen and (max-width:600px){
+    .mainBlock{
+        h1{
+            text-align: center;
+            color:$paragraphColor;
+            font-size:25px;
+        }
+    }
+}

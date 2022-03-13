@@ -14,22 +14,13 @@ export const Storage = (props:any) =>{
     const [email, setEmail] = useState<string>();
     const [adress, setAdress] = useState<string>();
     const [creditCard, setCreditCard] = useState<number>();
+    const [toggleMobileBar, setToggleMobileBar] = useState<boolean>(false);
 
     const firstRender = useRef<boolean>(true);
     const [windowSize, setWindowSize] = useState<Object>({
         width: window.innerWidth,
         height: window.innerHeight,
     });
-    useEffect(()=>{
-        if(firstRender){
-            firstRender.current=false;
-        }else{
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        }
-    },[])
     const context = {
         displaySize:[windowSize, setWindowSize],
         Server:server,
@@ -39,7 +30,9 @@ export const Storage = (props:any) =>{
         UserInfoCheck:[userInfoCheck, setUserInfoCheck],
         Email:[email, setEmail],
         Adress:[adress, setAdress],
-        CreditCard:[creditCard, setCreditCard]
+        CreditCard:[creditCard, setCreditCard],
+        WindowSize:[windowSize, setWindowSize],
+        ToggleMobileBar:[toggleMobileBar, setToggleMobileBar]
     }
 
     return (

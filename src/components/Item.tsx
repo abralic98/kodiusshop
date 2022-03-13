@@ -11,8 +11,9 @@ interface Iitem {
 }
 
 const Item = (props:Iitem) =>{
-    const {FinalPrice, Cart} = useContext(ContextApi);
+    const {FinalPrice, Cart, UserInfoCheck} = useContext(ContextApi);
     const [finalPrice, setFinalPrice] = FinalPrice;
+    const [userInfoCheck, setUserInfoCheck] = UserInfoCheck;
     const [cart, setCart] = Cart;
     const [multiplier, setMultiplier] = useState<number>(1);
     const [textColor, setTextColor] = useState<string>("rgb(121, 0, 0)");
@@ -32,6 +33,12 @@ const Item = (props:Iitem) =>{
                     multiplier:multiplier
                 }]
             )
+        })
+        setUserInfoCheck((prev:boolean[])=>{
+            prev[0] = false;
+            prev[1] = false;
+            prev[2] = false;
+            return [...prev];
         })
         setFinalPrice((prev:number)=>prev+price*multiplier);
         changeButtonText();

@@ -5,9 +5,10 @@ import { ContextApi } from "../storage/Context";
 import { useNavigate } from "react-router";
 
 const PromotionsPage = () =>{
-    const {Server, Promotions, FinalPrice} = useContext(ContextApi);
+    const {Server, Promotions, FinalPrice, UserInfoCheck} = useContext(ContextApi);
     const [promotions, setPromotions] = Promotions;
     const [finalPrice, setFinalPrice] = FinalPrice;
+    const [userInfoCheck, setUserInfoCheck] = UserInfoCheck;
     const server = Server;
     const navigate = useNavigate();
 
@@ -29,42 +30,26 @@ const PromotionsPage = () =>{
         if(i===2){
             arr[i]=true;
         }
-        setPromotions((prev:Array<3>)=>[...prev])
+        setPromotions((prev:Array<3>)=>[...prev]);
+        setUserInfoCheck((prev:boolean[])=>{
+            prev[0] = false;
+            prev[1] = false;
+            prev[2] = false;
+            return [...prev];
+        })
     }
     function deactivatePromotion(i:number){
         let arr = promotions;
         arr[i] = false;
-        setPromotions((prev:Array<3>)=>[...prev])
+        setPromotions((prev:Array<3>)=>[...prev]);
+        setUserInfoCheck((prev:boolean[])=>{
+            prev[0] = false;
+            prev[1] = false;
+            prev[2] = false;
+            return [...prev];
+        })
     }
     
-    function calculate(finalPrice:number, promotions:Array<boolean>){
-        let sum = finalPrice;
-        if(promotions[0]===true && promotions[1]===true){
-            return 0;
-        }
-        if(promotions[0]===true && promotions[1]===false && promotions[2]===false){
-            return sum = sum * 0.95
-        }
-        if(promotions[0]===false && promotions[1]===true && promotions[2]===false){
-            return sum = sum * 0.80
-        }
-        if(promotions[0]===true && promotions[1]===false && promotions[2]===true){
-            return sum = (sum * 0.95 - 20)
-        }
-        if(promotions[0]===false && promotions[1]===true && promotions[2]===true){
-            return sum = (sum * 0.80 - 20)
-        }
-        if(promotions[0]===false && promotions[1]===false && promotions[2]===true){
-            return sum-=20
-        }
-        if(promotions[0]===false && promotions[1]===false && promotions[2]===true){
-            return sum-=20
-        }
-        
-    }
-    useEffect(()=>{
-        console.log(promotions)
-    },[promotions])
     return (
         <div className={classes.mainBlock}>
             <Header/>

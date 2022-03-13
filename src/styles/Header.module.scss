@@ -6,6 +6,7 @@
 }
 .header{
     background-color: $headerNavBarColor;
+    z-index:1;
     width:100vw;
     height:100px;
     display:flex;
@@ -14,27 +15,24 @@
     position:fixed;
     top:0;
     left:0;
-
     p{
         color:$paragraphColor;
         font-family: $mainFont;
         cursor:pointer;
     }
-
     .logoBlock{
         margin-left:1vw;
+        margin-top:10px;
         img{
             width:10vw;
             height:auto;
         }
     }
-
     .navBlock{
         width:30vw;
         display:flex;
         align-items: center;
         justify-content: space-between;
-
         p{
             font-size:25px;
         }
@@ -43,7 +41,6 @@
             transition:0.3s;
         }
     }
-
     .checkoutBar{
         width:10vw;
         height:auto;
@@ -51,7 +48,6 @@
         align-items: center;
         justify-content: center;
         margin-right:1vw;
-
         p{
             font-size:20px;
             margin-right:1vw;
@@ -66,6 +62,105 @@
             color:$prettyRedColor;
             transition:0.3s;
         }
+    } 
+}
+
+// responsive
+@media only screen and (max-width:1400px){
+    .mainBlock{
+        height:100px;
     }
+    .header{
+        p{
+            color:$paragraphColor;
+            font-family: $mainFont;
+            cursor:pointer;
+        }
+        .navBlock{
+            p{
+                font-size:20px;
+            }
+        }
+        .checkoutBar{
+            width:10vw;
+            p{
+                font-size:20px;
+                margin-right:1vw;
+            }
+            .icon{
+                width:25px;
+                height:25px;
+            }
+        }    
+    }
+}
+@media only screen and (max-width:1300px){
+    .header{
+        .checkoutBar{
+            width:12vw;
+            margin-right:1vw;
+            p{
+                font-size:20px;
+                margin-right:1vw;
+            }
+            .icon{
+                width:25px;
+                height:25px;
+            }
+        }    
+    }
+}
+// phone tablet
+
+@media only screen and (max-width:1000px){
+    .menuBar{
+        color:white;
+        font-size:40px;
+        margin-left:3vw;
+    }
+    .header{
+
+        .checkoutBar{
+            .icon{
+                display:none;
+            }
+        }
+        .logoBlock{
+            margin-left:0vw;
+            img{
+                width:15vw;
+                height:auto;
+            }
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .header{
+        .logoBlock{
+            img{
+                width:20vw;
+                height:auto;
+            }
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .header{
+        .logoBlock{
+            margin-left:4vw;
+            img{
+                width:25vw;
+                height:auto;
+            }
+        }
+        .checkoutBar{
+            width:20vw;
+            margin-right:1vw;
+            p{
+                font-size:15px;
+                margin-right:1vw;
+            }
     
+        }    
+    }
 }

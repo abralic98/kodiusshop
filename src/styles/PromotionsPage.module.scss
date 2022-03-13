@@ -67,3 +67,159 @@
         }
     }
 }
+
+@media only screen and (max-width:1300px){
+    .mainBlock{
+        .promotionBlock{
+            .promotion{
+                width:25vw;
+                img{
+                    width:25vw;
+                    height:20vw;
+                }
+                button{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 12vw, 4vw, 1)
+                }
+                button:hover{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 12vw, 4vw, 1.1)
+                }
+            }
+        }
+        .btnBlock{
+            button{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 12vw, 4vw, 1);
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 12vw, 4vw, 1.1)
+            }
+        }
+    }
+}
+@media only screen and (max-width:900px){
+    .mainBlock{
+        .promotionBlock{
+            width:90vw;
+            flex-wrap:wrap;
+            .promotion{
+                width:29vw;
+                img{
+                    width:29vw;
+                    height:23vw;
+                }
+                button{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 15vw, 5vw, 1)
+                }
+                button:hover{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 15vw, 5vw, 1.1)
+                }
+            }
+        }
+        .btnBlock{
+            width:90vw;
+            button{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 15vw, 5vw, 1);
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 15vw, 5vw, 1.1)
+            }
+        }
+    }
+}
+@media only screen and (max-width:800px){
+    .mainBlock{
+        .promotionBlock{
+            width:90vw;
+            flex-wrap:wrap;
+            .promotion{
+                width:44vw;
+                img{
+                    width:44vw;
+                    height:35vw;
+                }
+                button{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 20vw, 6vw, 1)
+                }
+                button:hover{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 20vw, 6vw, 1.1)
+                }
+            }
+        }
+        .btnBlock{
+            width:90vw;
+            button{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 20vw, 6vw, 1);
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 20vw, 6vw, 1.1)
+            }
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .mainBlock{
+        .promotionBlock{
+            width:90vw;
+            flex-wrap:wrap;
+            .promotion{
+                width:44vw;
+                p{
+                    font-size:15px;
+                    margin-top:2vw;
+                    margin-bottom:2vw;
+                }
+                img{
+                    width:44vw;
+                    height:35vw;
+                }
+                button{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 25vw, 8vw, 1)
+                }
+                button:hover{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 25vw, 8vw, 1.1)
+                }
+            }
+        }
+        .btnBlock{
+            button{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 25vw, 8vw, 1);
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 25vw, 8vw, 1.1)
+            }
+        }
+    }
+}
+@media only screen and (max-width:500px){
+    .mainBlock{
+        .promotionBlock{
+            width:90vw;
+            flex-wrap:wrap;
+            .promotion{
+                width:90vw;
+                p{
+                    font-size:15px;
+                    margin-top:2vw;
+                    margin-bottom:2vw;
+                }
+                img{
+                    width:90vw;
+                    height:60vw;
+                }
+                button{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 30vw, 8vw, 1)
+                }
+                button:hover{
+                    @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 30vw, 8vw, 1.1)
+                }
+            }
+        }
+        .btnBlock{
+            button{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 30vw, 8vw, 1);
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 30vw, 8vw, 1.1)
+            }
+        }
+    }
+}

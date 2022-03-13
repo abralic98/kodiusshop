@@ -4,9 +4,7 @@ import Item from "./Item"
 import {useState, useEffect, useContext} from "react";
 import Axios from "axios";
 import { ContextApi } from "../storage/Context";
-interface Iitem {
 
-}
 const ItemList = () =>{
     const {Server} = useContext(ContextApi);
     const server = Server;

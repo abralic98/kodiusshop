@@ -3,13 +3,14 @@
 .mainBlock{
     width:90vw;
     min-height:30vw;
-    margin-left:auto;
-    margin-right:auto;
+    position:absolute;
+    top:100px;
+    bottom:0;
+    left:5vw;
     background-color: $shopListBackground;
     display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     overflow: hidden;
     .steps{
         display:flex;
@@ -45,6 +46,9 @@
         scroll-behavior: smooth;
         height:60vh;
         
+    }
+    .sortedBlock{
+        background-color: red;
     }
     .item{
         width:90vw;
@@ -111,20 +115,17 @@
         background-color: grey;
     }
     .btnBlock{
-        width:20vw;
+        position:absolute;
+        bottom:5vw;
         display:flex;
         align-items: center;
         justify-content: space-between;
 
         :nth-child(1){
             @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 8vw, 2vw, 1);
-            margin-top:3vw;
-            margin-bottom:1vw;
         }
         :nth-child(2){
             @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 8vw, 2vw, 1);
-            margin-top:3vw;
-            margin-bottom:1vw;
         }
     }
     .promotions{
@@ -163,6 +164,7 @@
     }
     .paymentBlock{
         width:80vw;
+
         display:flex;
         flex-direction: column;
         align-items: center;
@@ -195,6 +197,266 @@
                 margin-left:2vw;
                 width:4vw;
                 height:3vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width:1600px){
+    .mainBlock{
+        .promotions{
+            .priceBlock{
+                div{
+                    display:flex;
+                    width:15vw;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:1500px){
+    .mainBlock{
+        .steps{
+            justify-content: center;
+            width:auto;
+            .step{
+                border-radius:50%;
+                width:4vw;
+                height:4vw;
+                p{
+                    color:$paragraphColor;
+                    font-family: $mainFont;
+                    font-size:20px;
+                }
+            }
+            .lineStep{
+                font-size:20px;
+            }
+        }
+        .paymentBlock{
+            .paymentCart{
+                width:50vw;
+                height:6vw;
+                img{
+                    width:8vw;
+                    height:5vw;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1300px){
+    .mainBlock{
+        .btnBlock{
+            width:40vw;
+            :nth-child(1){
+                @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 15vw, 4vw, 1);
+            }
+            :nth-child(2){
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 15vw, 4vw, 1);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1200px){
+    .mainBlock{
+        .item{
+            height:8vw;
+            .info{
+                .multiplier{
+                    margin-right:5vw;
+                }
+            }
+            img{
+                width:10vw;
+                height:6vw;
+            }
+        }
+        .promotions{
+            .priceBlock{
+                margin-bottom:3vw;
+                div{
+                    display:flex;
+                    width:30vw;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+        .btnBlock{
+            :nth-child(1){
+                @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 15vw, 4vw, 1);
+            }
+            :nth-child(2){
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 15vw, 4vw, 1);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1000px){
+    .mainBlock{
+        .item{
+            height:10vw;
+            font-size:15px;
+            .info{
+                .multiplier{
+                    margin-right:5vw;
+                }
+            }
+            img{
+                width:10vw;
+                height:6vw;
+            }
+        }
+        .scrollBlock{
+            height:70vh;   
+        }
+    }
+}
+@media only screen and (max-width:900px){
+    .mainBlock{
+        .item{
+            height:13vw;
+            font-size:13px;
+            .info{
+                .multiplier{
+                    margin-right:5vw;
+                }
+            }
+            img{
+                width:10vw;
+                height:6vw;
+            }
+        }
+        .paymentBlock{
+            .paymentCart{
+                width:50vw;
+                height:10vw;
+                img{
+                    width:10vw;
+                    height:7vw;
+                }
+            }
+        }
+        .btnBlock{
+            width:50vw;
+            :nth-child(1){
+                @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 20vw, 5vw, 1);
+            }
+            :nth-child(2){
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 20vw, 5vw, 1);
+            }
+        }
+    }
+}
+@media only screen and (max-width:700px){
+    .mainBlock{
+        .steps{
+            .step{
+                width:6vw;
+                height:6vw;
+            }
+            .lineStep{
+                font-size:15px;
+            }
+        }
+        .item{
+            height:16vw;
+            font-size:13px;
+            .info{
+                .multiplier{
+                    margin-right:5vw;
+                }
+            }
+            img{
+                width:10vw;
+                height:6vw;
+            }
+        }
+        .promotions{
+            .priceBlock{
+                margin-bottom:7vw;
+                div{
+                    display:flex;
+                    width:40vw;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .mainBlock{
+        .item{
+            height:20vw;
+            font-size:13px;
+            .info{
+                .multiplier{
+                    margin-right:5vw;
+                }
+            }
+            .specialPromotion{
+                display: none;
+            }
+            .multiplier{
+                margin-right:0;
+                margin-left:5vw;
+            }
+            .name{
+                width:40vw;
+            }
+            img{
+                width:15vw;
+                height:10vw;
+            }
+        }
+        .btnBlock{
+            width:70vw;
+            :nth-child(1){
+                @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 30vw, 8vw, 1);
+            }
+            :nth-child(2){
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 30vw, 8vw, 1);
+            }
+        }
+    }
+}
+@media only screen and (max-width:500px){
+    .mainBlock{
+        .steps{
+            margin-top:2vw;
+            margin-bottom:2vw;
+            .step{
+                width:8vw;
+                height:8vw;
+            }
+            .lineStep{
+                font-size:15px;
+            }
+        }
+        .item{
+            height:20vw;
+            font-size:13px;
+        }
+        .scrollBlock{
+            height:65vh;
+        }
+        .promotions{
+            font-size:15px;
+        }
+        .paymentBlock{
+            .paymentCart{
+                width:70vw;
+                height:10vw;
+                img{
+                    width:8vw;
+                    height:5vw;
+                }
             }
         }
     }

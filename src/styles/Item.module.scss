@@ -8,7 +8,6 @@
     flex-direction: column;
     align-items: center;
     background-color: $background;
-    
     p{
         color:$paragraphColor;
         font-family: $mainFont;
@@ -17,7 +16,6 @@
         width:15vw;
         height:10vw;
     }
-    
     .namePriceBlock{
         width:15vw;
         height:auto;
@@ -27,10 +25,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-
-        p{
-
-        }
     }
     .buttonBlock{
         width:13vw;
@@ -53,6 +47,113 @@
             border:0;
             color:white;
             font-family: $mainFont;
+        }
+    }
+}
+
+@media only screen and (max-width:1500px){
+    .mainBlock{
+        width:25vw;
+        .namePriceBlock{
+            width:20vw;
+        }
+        img{
+            width:25vw;
+            height:18vw;
+        }
+        .buttonBlock{
+            width:20vw;
+            button{
+                @include button($buttonTransparent,$prettyRedColor, $prettyRedColor, 12vw, 3vw, 1)
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyRedColor, 12vw, 3vw, 1.1)
+            }
+            select{
+                width:4vw;
+                height:3vw;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:1000px){
+    .mainBlock{
+        width:39vw;
+
+        img{
+            width:39vw;
+            height:25vw;
+        }
+        .namePriceBlock{
+            width:30vw;
+        }
+        .buttonBlock{
+            width:30vw;
+            button{
+                @include button($buttonTransparent,$prettyRedColor, $prettyRedColor, 20vw, 5vw, 1)
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyRedColor, 20vw, 5vw, 1.1)
+            }
+            select{
+                width:7vw;
+                height:5vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width:600px){
+    .mainBlock{
+        width:44vw;
+        img{
+            width:44vw;
+            height:29vw;
+        }
+        .namePriceBlock{
+            width:35vw;
+            margin-top:2vw;
+            margin-bottom:2vw;
+        }
+        .buttonBlock{
+            width:40vw;
+            button{
+                @include button($buttonTransparent,$prettyRedColor, $prettyRedColor, 28vw, 7vw, 1)
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyRedColor, 28vw, 7vw, 1.1)
+            }
+            select{
+                width:9vw;
+                height:7vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width:500px){
+    .mainBlock{
+        width:89vw;
+        img{
+            width:89vw;
+            height:55vw;
+        }
+        .namePriceBlock{
+            width:35vw;
+            margin-top:2vw;
+            margin-bottom:2vw;
+        }
+        .buttonBlock{
+            width:60vw;
+            button{
+                @include button($buttonTransparent,$prettyRedColor, $prettyRedColor, 40vw, 10vw, 1)
+            }
+            button:hover{
+                @include button($buttonTransparent,	$prettyGreenColor, $prettyRedColor, 40vw, 10vw, 1.1)
+            }
+            select{
+                width:12vw;
+                height:10vw;
+            }
         }
     }
 }
