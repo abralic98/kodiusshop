@@ -1,4 +1,4 @@
-import classes from "../styles/CheckoutList.module.scss"
+import classes from "../styles/CheckoutList.module.scss";
 import {RiDeleteBin5Fill} from "react-icons/ri";
 import {useContext} from "react";
 import { ContextApi } from "../storage/Context";

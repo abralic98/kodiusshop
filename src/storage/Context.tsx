@@ -15,8 +15,7 @@ export const Storage = (props:any) =>{
     const [adress, setAdress] = useState<string>();
     const [creditCard, setCreditCard] = useState<number>();
     const [toggleMobileBar, setToggleMobileBar] = useState<boolean>(false);
-
-    const firstRender = useRef<boolean>(true);
+    const [toggleMainBlock, setToggleMainBlock] = useState<boolean>(true);
     const [windowSize, setWindowSize] = useState<Object>({
         width: window.innerWidth,
         height: window.innerHeight,
@@ -32,7 +31,8 @@ export const Storage = (props:any) =>{
         Adress:[adress, setAdress],
         CreditCard:[creditCard, setCreditCard],
         WindowSize:[windowSize, setWindowSize],
-        ToggleMobileBar:[toggleMobileBar, setToggleMobileBar]
+        ToggleMobileBar:[toggleMobileBar, setToggleMobileBar],
+        ToggleMainBlock:[toggleMainBlock, setToggleMainBlock]
     }
 
     return (

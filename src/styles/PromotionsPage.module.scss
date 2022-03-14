@@ -128,8 +128,6 @@
 @media only screen and (max-width:800px){
     .mainBlock{
         .promotionBlock{
-            width:90vw;
-            flex-wrap:wrap;
             .promotion{
                 width:44vw;
                 img{
@@ -158,8 +156,6 @@
 @media only screen and (max-width:600px){
     .mainBlock{
         .promotionBlock{
-            width:90vw;
-            flex-wrap:wrap;
             .promotion{
                 width:44vw;
                 p{
@@ -192,15 +188,8 @@
 @media only screen and (max-width:500px){
     .mainBlock{
         .promotionBlock{
-            width:90vw;
-            flex-wrap:wrap;
             .promotion{
                 width:90vw;
-                p{
-                    font-size:15px;
-                    margin-top:2vw;
-                    margin-bottom:2vw;
-                }
                 img{
                     width:90vw;
                     height:60vw;

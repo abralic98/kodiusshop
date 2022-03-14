@@ -18,7 +18,6 @@ const ItemList = () =>{
     useEffect(()=>{
         Axios.get(`${server}/api/get/items`)
         .then((response)=>{
-            console.log(response.data)
             setItems(response.data);
             setIsLoading(false);
         })
@@ -28,9 +27,9 @@ const ItemList = () =>{
         <div className={classes.mainBlock}>
             {isLoading!==true ? 
             <div className={classes.itemList}>
-                {items.map((item)=>{
+                {items.map((item, index)=>{
                     return(
-                        <Item ID={item.ID} name={item.name} price={item.price} image={item.image}/>
+                        <Item key={index} ID={item.ID} name={item.name} price={item.price} image={item.image}/>
                     )
                 })}
             </div>

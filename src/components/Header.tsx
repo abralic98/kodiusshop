@@ -40,7 +40,7 @@ const Header = () =>{
                     <p onClick={()=>redirect(1)}>Promotions</p>
                     <p onClick={()=>redirect(2)}>Checkout</p>
                 </div>
-                <div className={classes.checkoutBar}>
+                <div onClick={(()=>redirect(2))}className={classes.checkoutBar}>
                     <p>{Math.round(finalPrice * 100) / 100}$</p>
                     <BsCart4 className={classes.icon}/>
                 </div>

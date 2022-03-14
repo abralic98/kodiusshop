@@ -1,4 +1,4 @@
-import classes from "../styles/UserInfoForm.module.scss"
+import classes from "../styles/UserInfoForm.module.scss";
 import {useRef, useContext} from "react"; 
 import { ContextApi } from "../storage/Context";
 const UserInfoForm = () =>{
@@ -24,12 +24,12 @@ const UserInfoForm = () =>{
             if(emailInputRef.current.value!==""){
                 setUserInfoCheck((prev:Array<boolean>)=>{
                     prev[0]=true;
-                    return [...prev]
+                    return [...prev];
                 })
             }else{
                 setUserInfoCheck((prev:Array<boolean>)=>{
                     prev[0]=false;
-                    return [...prev]
+                    return [...prev];
                 })
                 emailInputRef.current.value="";
             }
@@ -38,12 +38,12 @@ const UserInfoForm = () =>{
             if(adressInputRef.current.value!==""){
                 setUserInfoCheck((prev:Array<boolean>)=>{
                     prev[1]=true;
-                    return [...prev]
+                    return [...prev];
                 })
             }else{
                 setUserInfoCheck((prev:Array<boolean>)=>{
                     prev[1]=false;
-                    return [...prev]
+                    return [...prev];
                 })
                 adressInputRef.current.value="";
             }
@@ -52,12 +52,12 @@ const UserInfoForm = () =>{
             if(creditCardInputRef.current.value!==""){
                 setUserInfoCheck((prev:Array<boolean>)=>{
                     prev[2]=true;
-                    return [...prev]
+                    return [...prev];
                 })
             }else{
                 setUserInfoCheck((prev:Array<boolean>)=>{
                     prev[2]=false;
-                    return [...prev]
+                    return [...prev];
                 })
                 creditCardInputRef.current.value="";
             }
@@ -80,7 +80,7 @@ const UserInfoForm = () =>{
                         <label htmlFor="">Credit Card Number</label>
                         <input onChange={(e)=>setCreditCard(e.target.value)} style={{borderColor:getColor(userInfoCheck[2])}} ref={creditCardInputRef} type="number" />
                     </div>
-                    <button>Check</button>
+                    <button className={classes.check}>Check</button>
                 </form>
             </div>
         </div>

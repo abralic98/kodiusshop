@@ -1,6 +1,6 @@
 
 import classes from "../styles/Item.module.scss"
-import {useState, useContext, useEffect, useRef} from "react";
+import {useState, useContext, useRef} from "react";
 import { ContextApi } from "../storage/Context";
 
 interface Iitem {
@@ -19,9 +19,6 @@ const Item = (props:Iitem) =>{
     const [textColor, setTextColor] = useState<string>("rgb(121, 0, 0)");
     const buttonValue = useRef<HTMLButtonElement>(null);
 
-    useEffect(()=>{
-        console.log(cart)
-    },[cart])
     function addToCart(name:string, price:number, image:string, multiplier:number){
         setCart((prev:any)=>{
             return(

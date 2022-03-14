@@ -47,9 +47,6 @@
         height:60vh;
         
     }
-    .sortedBlock{
-        background-color: red;
-    }
     .item{
         width:90vw;
         height:5vw;
@@ -120,12 +117,13 @@
         display:flex;
         align-items: center;
         justify-content: space-between;
+        width:30vw;
 
         :nth-child(1){
-            @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 8vw, 2vw, 1);
+            @include button($buttonTransparent,	$prettyRedColor, $prettyRedColor, 12vw, 4vw, 1);
         }
         :nth-child(2){
-            @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 8vw, 2vw, 1);
+            @include button($buttonTransparent,	$prettyGreenColor, $prettyGreenColor, 12vw, 4vw, 1);
         }
     }
     .promotions{
@@ -447,7 +445,10 @@
             height:65vh;
         }
         .promotions{
-            font-size:15px;
+            font-size:13px;
+            div{
+                width:40vw;
+            }
         }
         .paymentBlock{
             .paymentCart{
